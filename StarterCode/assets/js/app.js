@@ -56,6 +56,7 @@ d3.csv("assets/data/data.csv").then(function (healthData) {
 
     // Step 5: Create Circles
     // ==============================
+    
     var circlesGroup = chartGroup.selectAll("circle")
         .data(healthData)
         .enter()
@@ -64,7 +65,6 @@ d3.csv("assets/data/data.csv").then(function (healthData) {
         .attr("cx", d => xLinearScale(d.poverty))
         .attr("cy", d => yLinearScale(d.healthcare))
         .attr("r", "15")
-        
 
     var textGroup = chartGroup.selectAll("text")
         .data(healthData)
@@ -76,7 +76,10 @@ d3.csv("assets/data/data.csv").then(function (healthData) {
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
         .text(d => d.abbr)
-        
+        console.log(textGroup)
+
+
+    
 
     // Step 6: Initialize tool tip
     // ==============================
@@ -102,7 +105,6 @@ d3.csv("assets/data/data.csv").then(function (healthData) {
         });
 
 
-
     // Create axes labels
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
@@ -116,6 +118,7 @@ d3.csv("assets/data/data.csv").then(function (healthData) {
         .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
         .attr("class", "aText")
         .text("In Poverty (%)");
+
 }).catch(function (error) {
     console.log(error);
 });
