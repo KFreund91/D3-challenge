@@ -66,7 +66,8 @@ d3.csv("assets/data/data.csv").then(function (healthData) {
         .attr("cy", d => yLinearScale(d.healthcare))
         .attr("r", "15")
 
-    var textGroup = chartGroup.selectAll("text")
+    var textGroup = chartGroup.append("g")
+        .selectAll("text")
         .data(healthData)
         .enter()
         .append("text")
